@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 宿霧 & 薄荷島 8天7夜陽光潛水美食之旅</title>
+    <style>
+        :root {
+            --primary: #0077b6;
+            --secondary: #00b4d8;
+            --accent: #f77f00;
+            --bg: #f4f9fc;
+            --card-bg: #ffffff;
+            --text: #2b2d42;
+            --muted: #6c757d;
+            --border: #e0fbfc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        /* Header Banner */
+        header {
+            background: linear-gradient(135deg, #03045e, #0077b6, #00b4d8);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 119, 182, 0.2);
+        }
+
+        header h1 {
+            font-size: 1.9rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: -25px auto 0;
+            padding: 0 16px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid #edf2f4;
+            padding-bottom: 10px;
+        }
+
+        /* Summary Grid */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .info-box {
+            background: #f8fdff;
+            border: 1px solid #caf0f8;
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .info-box h3 {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .flight-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed #cce3de;
+            font-size: 0.95rem;
+        }
+
+        .flight-row:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge-flight {
+            background: #e0fbfc;
+            color: #0077b6;
+        }
+
+        .badge-price {
+            background: #ffe5d9;
+            color: #d62828;
+            font-size: 1rem;
+        }
+
+        /* Tips Box */
+        .tips-box {
+            background-color: #e8f4f8;
+            border: 1px solid #bde0fe;
+            color: #03045e;
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        .tips-box strong {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 1.02rem;
+            color: #023e8a;
+        }
+
+        .tips-box ul {
+            padding-left: 20px;
+            margin-top: 4px;
+        }
+
+        .tips-box li {
+            margin-bottom: 3px;
+        }
+
+        /* Itinerary Table */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+
+        th, td {
+            padding: 14px 12px;
+            text-align: left;
+            border-bottom: 1px solid #edf2f4;
+            font-size: 0.92rem;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #0077b6;
+            color: white;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        tr:hover {
+            background-color: #f8fdff;
+        }
+
+        .day-badge {
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        .weekday {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            background: #e0fbfc;
+            color: #0077b6;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            margin-left: 4px;
+        }
+
+        .hotel-name {
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        .price-col {
+            white-space: nowrap;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .price-highlight {
+            color: #d62828;
+            font-weight: 700;
+        }
+
+        .tag-meal {
+            display: inline-block;
+            background: #fff0f3;
+            color: #c9184a;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* Pocket List Grid */
+        .pocket-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .pocket-item {
+            border-left: 4px solid var(--secondary);
+            background: #f8f9fa;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .pocket-item h4 {
+            color: #03045e;
+            margin-bottom: 6px;
+        }
+
+        .pocket-item ul {
+            padding-left: 18px;
+            font-size: 0.9rem;
+            color: #495057;
+        }
+
+        .pocket-item li {
+            margin-bottom: 4px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+            .card {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🌴 2026 宿霧 & 薄荷島 8天7夜陽光潛水美食之旅</h1>
+    <p>日期：2026/12/15 (二) － 12/22 (二) ｜ 4人同行・浮潛/深潛・美食與每日按摩</p>
+</header>
+
+<div class="container">
+
+    <!-- 航班與固定預算總覽 -->
+    <div class="card">
+        <h2 class="section-title">✈️ 航班資訊 & 機加酒費用概覽</h2>
+        <div class="summary-grid">
+            <div class="info-box">
+                <h3>星宇航空 (含 23KG 托運行李)</h3>
+                <div class="flight-row">
+                    <span><strong>去程 12/15 (二)</strong> <span class="badge badge-flight">JX783</span></span>
+                    <span>15:40 台北 ➔ 18:35 宿霧</span>
+                </div>
+                <div class="flight-row">
+                    <span><strong>回程 12/22 (二)</strong> <span class="badge badge-flight">JX784</span></span>
+                    <span>19:35 宿霧 ➔ 22:25 台北</span>
+                </div>
+                <div class="flight-row" style="margin-top: 6px;">
+                    <span><strong>機票費用 (每人)</strong></span>
+                    <span class="badge badge-price">NT$ 8,378</span>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>🏨 住宿費用統計 (4人分攤)</h3>
+                <div class="flight-row">
+                    <span>12/15 宿霧馬波羅R飯店 (1晚)</span>
+                    <span>總價 $1,382 ｜ <strong>每人 $346</strong></span>
+                </div>
+                <div class="flight-row">
+                    <span>12/16-20 薄荷島 Henann (4晚)</span>
+                    <span>總價 $33,055 ｜ <strong>每人 $8,264</strong></span>
+                </div>
+                <div class="flight-row">
+                    <span>12/20-22 宿霧 Bayfront (2晚)</span>
+                    <span>總價 $5,921 ｜ <strong>每人 $1,480</strong></span>
+                </div>
+                <div class="flight-row" style="border-top: 2px solid #90e0ef; margin-top: 4px; padding-top: 8px;">
+                    <span><strong>機票 + 住宿 小計 (每人)</strong></span>
+                    <span class="badge badge-price">NT$ 10,090</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 交通與行前實用小叮嚀 -->
+    <div class="tips-box">
+        <strong>📌 交通、寄物與碼頭實戰攻略：</strong>
+        <ul>
+            <li><strong>機場至飯店：</strong>搭乘 <strong>GrabCar 6-Seater</strong>（適合4人加行李），車程約 12km、約 30 分鐘（尖峰塞車可能更久），費用約 <strong>450–550 PHP</strong>建議給司機小費 <strong>50–100 PHP</strong></li>
+            <li><strong>市區至 1 號碼頭：</strong>馬波羅 R 飯店至宿霧 1 號碼頭約 4km，Grab 費用約 <strong>130–180 PHP</strong></li>
+            <li><strong>行李寄放：</strong>若抵達碼頭太早，可直接到附近的 <strong>Mariners Court Hotel Cebu</strong> 寄放行李，費用約 <strong>50–100 PHP</strong></li>
+            <li><strong>碼頭規定：</strong>建議至少於船班出發前 <strong>1 小時</strong>抵達碼頭，預留安檢、換票與托運行李時間。碼頭稅：宿霧 <strong>25 PHP</strong>薄荷島 <strong>30 PHP</strong>大型行李托運費約 <strong>50–200 PHP</strong></li>
+            <li><strong>薄荷島行程安排：</strong>可於出發前在 Klook/KKday 平台一天一天預訂，或在當地社團找地陪安排報價。</li>
+        </ul>
+    </div>
+
+    <!-- 每日行程表 -->
+    <div class="card">
+        <h2 class="section-title">🗓️ 8天7夜 每日行程總表</h2>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>早 / 午 / 晚餐</th>
+                        <th>住宿飯店</th>
+                        <th class="price-col">住宿總價</th>
+                        <th class="price-col">每人分攤</th>
+                        <th>主要行程與活動</th>
+                        <th>交通與費用備註</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="day-badge">12月15日 <span class="weekday">二</span></td>
+                        <td>早：- / 午：-<br>晚：機上</td>
+                        <td class="hotel-name">宿霧馬波羅R飯店<br><small style="color:var(--muted)">(Cebu R Hotel - 含早餐)</small></td>
+                        <td class="price-col">$ 1,382</td>
+                        <td class="price-col price-highlight">$ 346</td>
+                        <td>抵達宿霧機場 (18:35) ➔ 搭 Grab 6-Seater 前往飯店 Check-in 休息（可去 24H SPA 按摩）</td>
+                        <td>Grab 450-550 PHP<br>小費 50-100 PHP</td>
+                    </tr>
+                    <tr>
+                        <td class="day-badge">12月16日 <span class="weekday">三</span></td>
+                        <td>早：飯店<br>晚：<span class="tag-meal">Ubeco</span></td>
+                        <td class="hotel-name">Henann Premier Coast Resort<br><small style="color:var(--muted)">(薄荷島連住4晚)</small></td>
+                        <td class="price-col" style="color:var(--muted)">(依總計)</td>
+                        <td class="price-col" style="color:var(--muted)">-</td>
+                        <td>
+                            • 早上退房，搭 Grab (130-180 PHP) 前往 1 號碼頭<br>
+                            • 若需寄物可至 <strong>Mariners Court Hotel</strong> (50-100 PHP)<br>
+                            • <b>宿霧市區觀光</b> (聖佩特羅堡、麥哲倫十字架)<br>
+                            • <b>15:20 - 17:20 搭船前往薄荷島</b> (航程 2 小時)<br>
+                            • 抵達薄荷島車程約半小時至飯店，晚上 Ubeco 晚餐 + 按摩
+                        </td>
+                        <td>碼頭稅：宿霧25 / 薄荷30<br>行李費：50-200 PHP<br>船票約 $500 / 人</td>
+                    </tr>
+                    <tr>
+                        <td class="day-badge">12月17日 <span class="weekday">四</span></td>
+                        <td>早：飯店<br>晚：<span class="tag-meal">Ubeco</span></td>
+                        <td class="hotel-name">Henann Premier Coast Resort</td>
+                        <td class="price-col" style="color:var(--muted)">(依總計)</td>
+                        <td class="price-col" style="color:var(--muted)">-</td>
+                        <td>
+                            • <b>Balicasag 巴里卡薩島海龜浮潛</b> (海底大斷層、看海龜)<br>
+                            • 下午回度假村泳池放空、<b>每日按摩</b>
+                        </td>
+                        <td>平臺預訂或地陪報價<br>(每人約 1 千多)</td>
+                    </tr>
+                    <tr>
+                        <td class="day-badge">12月18日 <span class="weekday">五</span></td>
+                        <td>早：飯店<br>晚：<span class="tag-meal">Ubeco</span></td>
+                        <td class="hotel-name">Henann Premier Coast Resort</td>
+                        <td class="price-col" style="color:var(--muted)">(依總計)</td>
+                        <td class="price-col" style="color:var(--muted)">-</td>
+                        <td>
+                            • <b>Napaling Reef 納帕林沙丁魚風暴</b> (浮潛 / 水肺深潛)<br>
+                            • 下午咖啡廳、看夕陽、<b>每日按摩</b>
+                        </td>
+                        <td>浮潛約 1 千多<br>水肺約 3 千</td>
+                    </tr>
+                    <tr>
+                        <td class="day-badge">12月19日 <span class="weekday">六</span></td>
+                        <td>早：飯店<br>晚：<span class="tag-meal">Ubeco</span></td>
+                        <td class="hotel-name">Henann Premier Coast Resort</td>
+                        <td class="price-col" style="color:var(--muted)">$ 33,055</td>
+                        <td class="price-col price-highlight">$ 8,264</td>
+                        <td>
+                            • <b>薄荷島陸上觀光一日遊</b> (巧克力山、眼鏡猴保護區、羅博河竹筏遊船)<br>
+                            • 晚上回 Alona Beach <b>按摩</b>
+                        </td>
+                        <td>包團行程約 6,400 PHP</td>
+                    </tr>
+                    <tr>
+                        <td class="day-badge">12月20日 <span class="weekday">日</span></td>
+                        <td>早：飯店<br>晚：宿霧美食</td>
+                        <td class="hotel-name">Bayfront Hotel Cebu<br><small style="color:var(--muted)">(North Reclamation)</small></td>
+                        <td class="price-col" style="color:var(--muted)">(依總計)</td>
+                        <td class="price-col" style="color:var(--muted)">-</td>
+                        <td>
+                            • <b>11:40 - 13:40 搭船返回宿霧市區</b><br>
+                            • 抵達宿霧後先去飯店 Check-in 放行李<br>
+                            • 市區閒逛、晚餐與放鬆按摩
+                        </td>
+                        <td>船票約 $500 / 人<br>薄荷島碼頭稅 30 PHP</td>
+                    </tr>
+                    <tr>
+                        <td class="day-badge">12月21日 <span class="weekday">一</span></td>
+                        <td>早：飯店<br>晚：宿霧烤乳豬</td>
+                        <td class="hotel-name">Bayfront Hotel Cebu<br><small style="color:var(--muted)">(North Reclamation)</small></td>
+                        <td class="price-col">$ 5,921</td>
+                        <td class="price-col price-highlight">$ 1,480</td>
+                        <td>
+                            • <b>凌晨 3:00 退房出發</b>，搭車 3.5 小時至 Oslob<br>
+                            • <b>KKday 奧斯陸鯨鯊浮潛 & 卡瓦山瀑布峽谷探險</b><br>
+                            • 15:30 返程，預計 18:00 左右回到飯店休息、按摩
+                        </td>
+                        <td>KKday 四人同行 $13,646<br>(平均每人約 $3,411)</td>
+                    </tr>
+                    <tr>
+                        <td class="day-badge">12月22日 <span class="weekday">二</span></td>
+                        <td>早：飯店<br>午：SM商場</td>
+                        <td class="hotel-name" style="color: var(--muted);">- <small>(無需住宿)</small></td>
+                        <td class="price-col">$ 0</td>
+                        <td class="price-col">$ 0</td>
+                        <td>
+                            • 飯店正對面 <b>SM City Cebu 商場</b> 採買伴手禮 (芒果乾、香蕉脆片)<br>
+                            • 最後一次 SPA 按摩 ➔ 16:30 搭 Grab 前往機場 (19:35 JX784 返台)
+                        </td>
+                        <td>Grab 6-Seater 至機場<br>小費 50-100 PHP</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 美食與按摩口袋名單 -->
+    <div class="card">
+        <h2 class="section-title">💆‍♀️ 美食替換 & 每日按摩口袋名單</h2>
+        <div class="pocket-grid">
+            <div class="pocket-item">
+                <h4>🍴 薄荷島韓國人開的神店 & 推薦餐廳</h4>
+                <ul>
+                    <li><strong>Ubeco (必吃首選)：</strong>慢燉牛肋排飯、鮮蝦漢堡、奶油培根義大利麵 (建議 11:00 開門或離峰去)。</li>
+                    <li><strong>BARWOO：</strong>如想換口味，這間也是韓國人開的叢林餐酒館，火焰豬肋排與鮮蝦芒果沙拉超強！</li>
+                    <li><strong>MIST Restaurant：</strong>超美森林系玻璃屋餐廳，適合潛水完去吃下午茶或早午餐。</li>
+                    <li><strong>BOHOL DON PANGLAO：</strong>專人代烤頂級韓式厚切豬五花與泡菜鍋 (Alona Town Center 1F)。</li>
+                </ul>
+            </div>
+
+            <div class="pocket-item">
+                <h4>🌿 薄荷島 & 宿霧 高評價按摩清單</h4>
+                <ul>
+                    <li><strong>Luna Tiger Spa (薄荷島)：</strong>就在 Henann 附近，4.9星超高評價，環境清香、曬後蘆薈與精油按摩極推。</li>
+                    <li><strong>Kawa Spa 카와스파 (薄荷島)：</strong>韓國人開的 5.0 滿分 SPA，開到半夜 12 點，吃完晚餐按剛剛好。</li>
+                    <li><strong>Alona Zen Spa / Thai Massage (薄荷島)：</strong>獨立包廂油壓或正宗泰式拉筋，都在大街上走路可達。</li>
+                    <li><strong>Tree Shade Spa (宿霧市區)：</strong>24小時營業韓資大店，適合第一天晚班機或最後一天去機場前放鬆。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
